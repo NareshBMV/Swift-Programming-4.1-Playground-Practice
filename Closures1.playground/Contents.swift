@@ -46,6 +46,60 @@ print("Shorthand : \(shorthandArgs)")
 let operatorMethod = names.sorted(by: >)
 print("Operator Method : \(operatorMethod)")
 
+//Trailing Closure Syntax
+//Trailing closure : closure as argument to a function and closure expression is too long, we can write closer expression after function call parantheses
+func someFunctionTakingClosure(closure:() -> Void) {
+    
+}
+
+//Normal closure call
+someFunctionTakingClosure(closure: {
+    
+})
+
+//Trailing closure call
+someFunctionTakingClosure() {
+    
+}
+
+//SortedBy method in trailing closure function
+let sortedInTrailingClosure = names.sorted(){$0>$1}
+print("sortedInTrailingClosure : \(sortedInTrailingClosure)")
+
+//No parentheses is required if the closure is the only argument in method parameter
+let onlyParameterClosure = names.sorted{$0>$1}
+print("onlyParameterClosure : \(onlyParameterClosure)")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
