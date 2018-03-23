@@ -111,6 +111,89 @@ incrementByThirty()
 let constant = increment //Though after assigning it still increments
 constant()
 
+//Escaping
+//@noescaping is by default in swift3 but before it was specified explicitly and @escaping is default behaviour
+//This is for memory optimization (@escaping can store the closure somewhere so memore storage optimization purpose it is not default in swift 3)
+//Closure is said to escaping when closure is called after the function return
+//Storing the closure outside variable and used later with escaping
+var completionHandler:[()->Void] = []
+func functionWithEscaping(closure :@escaping ()->Void) {
+    completionHandler.append(closure)
+}
+
+//@escaping - refer self explicitly
+//@noescaping - refer self implicitly
+func functionWithNoEscaping(closure:()->Void) {
+    closure()
+}
+
+class TestingEscapingAndNonEscaping {
+    var x:Int = 10
+    func doSomeThing() {
+        functionWithEscaping { //Stored for later use
+            self.x = 30 //Self specified explicitly
+        }
+        functionWithNoEscaping {
+            x = 50
+        }
+    }
+}
+
+var obj = TestingEscapingAndNonEscaping()
+obj.doSomeThing()
+print(obj.x)
+
+completionHandler.first?()
+print(obj.x)
+
+//Autoclosures
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
