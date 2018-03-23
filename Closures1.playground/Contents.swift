@@ -46,43 +46,43 @@ print("Shorthand : \(shorthandArgs)")
 let operatorMethod = names.sorted(by: >)
 print("Operator Method : \(operatorMethod)")
 
-//Trailing Closure Syntax
-//Trailing closure : closure as argument to a function and closure expression is too long, we can write closer expression after function call parantheses
-func someFunctionTakingClosure(closure:() -> Void) {
-    
+//Trailing Closure
+//If a closure is passed as argument to function then we can write closure expression after function call parantheses
+//There is no need to write argument lable to a function call having closure
+func trailingClosure(closure:()->Void) {
 }
-
-//Normal closure call
-someFunctionTakingClosure(closure: {
-    
+//Normal Closure Call
+trailingClosure(closure: {
 })
-
-//Trailing closure call
-someFunctionTakingClosure() {
-    
+//Trailing Closure Call
+trailingClosure {
 }
 
-//SortedBy method in trailing closure function
-let sortedInTrailingClosure = names.sorted(){$0>$1}
-print("sortedInTrailingClosure : \(sortedInTrailingClosure)")
+//Sorting method with Trailing Closure
+let sortingTrailingClosure =  names.sorted(){$0>$1}
+print("sortingTrailingClosure : \(sortingTrailingClosure)")
 
-//No parentheses is required if the closure is the only argument in method parameter
-let onlyParameterClosure = names.sorted{$0>$1}
-print("onlyParameterClosure : \(onlyParameterClosure)")
+//If closure is the only argument to a function then calling function no need to have parentheses
+let noParenthesesClosure = names.sorted{$0>$1}
+print("noParenthesesClosure : \(noParenthesesClosure)")
 
+//Demo of Array Method map to show trailing closure
+let digitsCount = [0:"Zero", 1:"One", 2:"Two", 3:"Three", 4:"Four", 5:"Five", 6:"Six", 7:"Seven", 8:"Eight", 9:"Nine"]
+let number =  [12 ,555, 12345]
 
+print("Mapping")
+let numberToString = number.map { (number) -> String in
+    var actualString = ""
+    var num = number
+    repeat {
+        actualString = digitsCount[num%10]! + actualString
+        num = num/10
+    }while num > 0
+    return actualString
+}
+print("numberToString : \(numberToString)")
 
-
-
-
-
-
-
-
-
-
-
-
+//Capturing Values
 
 
 
