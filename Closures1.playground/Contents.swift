@@ -83,10 +83,33 @@ let numberToString = number.map { (number) -> String in
 print("numberToString : \(numberToString)")
 
 //Capturing Values
+//Simplest form of capturing values is nested function
+//Nested function can capture values from its outer function
+func makeIncrement(Increment amount:Int)->()->Int {
+    var resultUpdate = 0
+    func incrementer()->Int {
+        resultUpdate += amount
+        return resultUpdate
+    }
+    return incrementer
+}
 
 
+let increment = makeIncrement(Increment: 10)
+increment()//calling closure nested function
+increment()
 
+let incrementByThirty = makeIncrement(Increment: 30)
+incrementByThirty()
+increment()
+increment()
+incrementByThirty()
 
+//Function and closure are reference types
+//Though functions are assigned to a constant ; constant will refer to those function or closlure
+//sample resultUpdate above changes, even if the function is assigned to constant
+let constant = increment //Though after assigning it still increments
+constant()
 
 
 
